@@ -1,0 +1,70 @@
+*:focus {
+    outline: 0 !important;
+}
+
+.main {
+	position:relative;
+	width:400px;
+	height:400px;
+	margin:0 auto;
+	transform: rotate(45deg);
+}
+
+.quarter {
+	position:absolute;
+	width:50%;
+	height:50%;
+	transition:background-color 0.2s ease-in-out;
+	font-style: serif;
+	font-size: 2em;
+}
+
+/*.quarter:hover {
+	background-color:pink;
+}*/
+
+.quarter1 {
+	top:0;
+	left:0;
+	/*background-color:red;*/
+	border-radius:100% 0 0 0;
+	border:0px solid transparent;
+}
+
+.quarter2 {
+	top:0;
+	right:0;
+/*	background-color:blue;
+*/	border-radius:0 100% 0 0 ;
+	border:0px solid transparent;
+}
+
+.quarter3 {
+	bottom:0;
+	left:0;
+	/*background-color:orange;*/
+	border-radius:0 0 0 100%;
+	border:0px solid transparent;
+}
+
+.quarter4 {
+	bottom:0;
+	right:0;
+	/*background-color:green;*/
+	border-radius:0 0 100% 0 ;
+	border:0px solid transparent;
+}
+
+.cutout {
+	width:50%;
+	height:50%;
+	background-color:white;
+	position:absolute;
+	top:25%;
+	left:25%;
+	border-radius:50%;
+/*	pointer-events:none;*/
+	border:0px solid transparent;
+	transform: rotate(315deg);
+	font-size: 2em;
+}
