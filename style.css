@@ -2,6 +2,10 @@
     outline: 0 !important;
 }
 
+a.bg-info:focus {
+	background-color: #17a2b8!important;
+}
+
 .main {
 	position:relative;
 	width:400px;
@@ -19,14 +23,11 @@
 	font-size: 2em;
 }
 
-/*.quarter:hover {
-	background-color:pink;
-}*/
 
 .quarter1 {
 	top:0;
 	left:0;
-	/*background-color:red;*/
+	background-color: #dc3545;
 	border-radius:100% 0 0 0;
 	border:0px solid transparent;
 }
@@ -34,15 +35,15 @@
 .quarter2 {
 	top:0;
 	right:0;
-/*	background-color:blue;
-*/	border-radius:0 100% 0 0 ;
+	background-color: #17a2b8;
+	border-radius:0 100% 0 0 ;
 	border:0px solid transparent;
 }
 
 .quarter3 {
 	bottom:0;
 	left:0;
-	/*background-color:orange;*/
+	background-color:#ffc107;
 	border-radius:0 0 0 100%;
 	border:0px solid transparent;
 }
@@ -50,7 +51,7 @@
 .quarter4 {
 	bottom:0;
 	right:0;
-	/*background-color:green;*/
+	background-color:#28a745;
 	border-radius:0 0 100% 0 ;
 	border:0px solid transparent;
 }
@@ -58,12 +59,10 @@
 .cutout {
 	width:50%;
 	height:50%;
-	background-color:white;
 	position:absolute;
 	top:25%;
 	left:25%;
 	border-radius:50%;
-/*	pointer-events:none;*/
 	border:0px solid transparent;
 	transform: rotate(315deg);
 	font-size: 2em;
