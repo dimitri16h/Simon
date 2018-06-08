@@ -66,4 +66,9 @@ a.bg-info:focus {
 	border:0px solid transparent;
 	transform: rotate(315deg);
 	font-size: 2em;
+	background-color:#343a40;
+}
+
+.score-text {
+	font-size: 2em;
 }

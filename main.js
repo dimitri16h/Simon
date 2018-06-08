@@ -1,5 +1,18 @@
 var colorButtons = document.getElementsByClassName("quarter");
 var startButton = document.getElementById("start-button");
+var cutouts = document.getElementsByClassName("cutout");
+var currentScoreElement = document.getElementById("current-score-text");
+var highScoreElement = document.getElementById("high-score-text");
+
+var currentScore = 0;
+var highScore = localStorage.getItem('highScore');
+console.log(highScore);
+if (highScore == null) {
+	highScore = 0;
+}
+highScoreElement.innerHTML = "High Score: " + highScore;
+
+
 
 var allColors = ["red", "blue", "yellow", "green"];
 var currentGameSequence = [];
@@ -35,7 +48,13 @@ function startButtonLogic() {
 	//startButton: hover off
 	currentGameSequence=[];
 	currentPlayerSequence=[];
-	checkLevelUp();
+	// checkLevelUp();
+	currentScore = 0;
+	currentScore.innerHTML = "Current Score: " + currentScore;
+
+	var firstColor = allColors[Math.floor(Math.random() * 4)];
+	currentGameSequence.push(firstColor);
+	setTimeout(showSequence, 500, 0);
 }
 
 function colorButtonLogic(){
@@ -74,13 +93,18 @@ function selectButton(color){
 
 function checkLevelUp(){
 
+	playerTurn = false;
+
 	if (currentPlayerSequence.toString() == currentGameSequence.toString()) {
 		//if they got it right, add a new color to the end
 		newColor = allColors[Math.floor(Math.random() * 4)];
 		currentGameSequence.push(newColor);
+
+		currentScore++;
+		currentScoreElement.innerHTML = "Current Score: " + currentScore;
+
 		console.log(currentGameSequence);
-		//stop allowing input and show the new sequence
-		playerTurn = false;
+		//show the new sequence
 		setTimeout(showSequence, 500, 0);
 	}
 
@@ -90,7 +114,13 @@ function checkLevelUp(){
 		//enable start button for new game
 		startButton.addEventListener("click", startButtonLogic);
 
-		console.log("YOU LOSE");
+
+		if (currentScore > highScore) {
+			highScore = currentScore;
+			highScoreElement.innerHTML = "High Score: " + highScore;
+			localStorage.setItem('highScore', highScore);
+		}
+
 
 	}
 
@@ -116,8 +146,6 @@ function incrementSequence(i) {
 	i++;
 	setTimeout(showSequence, 200, i);
 }
-
-
 
 function takePlayerSequence() {
 	playerTurn = true;
