@@ -22,17 +22,18 @@ document.onreadystatechange = function() {
 
 		for (var i=0; i < colorButtons.length; i++) {
 			colorButtons[i].addEventListener("mousedown", colorButtonLogic);
-			colorButtons[i].addEventListener("mouseup", clearAllLights);
+			colorButtons[i].addEventListener("mouseup", buttonReleaseLogic);
 		}	
 		window.addEventListener('keydown', arrowKeysLogic);
-		window.addEventListener('keyup', clearAllLights);
+		window.addEventListener('keyup', buttonReleaseLogic);
 	}
 }
 
 function startButtonLogic() {
 	//disable start button once game has started
 	startButton.removeEventListener("click", startButtonLogic);
-
+	currentGameSequence=[];
+	currentPlayerSequence=[];
 	checkLevelUp();
 }
 
@@ -53,6 +54,12 @@ function arrowKeysLogic(){
 	}
 }
 
+function buttonReleaseLogic(){
+	if (playerTurn) {
+		clearAllLights();
+	}
+}
+
 function selectButton(color){
 	if (currentPlayerSequence.length < currentGameSequence.length && playerTurn) {
 		currentPlayerSequence.push(color);
@@ -67,14 +74,23 @@ function selectButton(color){
 function checkLevelUp(){
 
 	if (currentPlayerSequence.toString() == currentGameSequence.toString()) {
+		//if they got it right, add a new color to the end
 		newColor = allColors[Math.floor(Math.random() * 4)];
 		currentGameSequence.push(newColor);
 		console.log(currentGameSequence);
+		//stop allowing input and show the new sequence
+		playerTurn = false;
 		setTimeout(showSequence, 500, 0);
 	}
 
 	else {
+		//if the sequences do not match:
+
+		//enable start button for new game
+		startButton.addEventListener("click", startButtonLogic);
+
 		console.log("YOU LOSE");
+
 	}
 
 }
