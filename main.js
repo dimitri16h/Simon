@@ -32,6 +32,7 @@ document.onreadystatechange = function() {
 function startButtonLogic() {
 	//disable start button once game has started
 	startButton.removeEventListener("click", startButtonLogic);
+	//startButton: hover off
 	currentGameSequence=[];
 	currentPlayerSequence=[];
 	checkLevelUp();
